@@ -1,0 +1,470 @@
+/* style-lift.css */
+:root {
+    /* Warna Dasar */
+    --bg-color: #F8F9FA; /* Sangat terang, bersih, netral untuk latar belakang */
+    --text-color: #212529; /* Hampir hitam, kuat, mudah dibaca, profesional */
+
+    /* Warna Aksi & Urgensi (disesuaikan untuk jasa bangunan) */
+    --primary-color: #007bff; /* Biru terang - Kepercayaan, modern, profesional */
+    --secondary-color: #28a745; /* Hijau - Pertumbuhan, Kesegaran, Go-ahead (untuk highlight jika ingin) */
+    --accent-color: #FFC107; /* Kuning Terang - Perhatian, Energi, Ramah (untuk CTA/Highlight utama, lebih 'hangat' dari oranye) */
+    --danger-color: #dc3545; /* Merah - Perhatian, Urgensi (untuk timer jika diaktifkan) */
+
+    /* Warna Netral Sekunder */
+    --light-gray: #e9ecef;
+    --dark-gray-text: #495057; /* Untuk paragraf atau teks pendukung */
+}
+
+/* Slider Konten Gambar */
+.slider-container {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+    height: auto;
+    object-fit: cover; /* Agar gambar tidak terdistorsi */
+}
+
+.prev-btn, .next-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 50%;
+    user-select: none;
+    transition: background-color 0.2s;
+    z-index: 2;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        max-width: 100%;
+        border-radius: 0;
+    }
+}
+
+/* General Body & Container */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* Hero Section */
+section.hero {
+    background-color: var(--primary-color); /* Biru terang sebagai hero background */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/hero-bangunan.jpg'); /* Tambahkan gambar hero bangunan jika ada */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    color: #fff; /* Teks putih untuk kontras dengan overlay gelap */
+}
+
+section.hero h1,
+section.hero p {
+    color: #fff; /* Memastikan h1 dan p di hero section berwarna putih */
+}
+
+/* Typography */
+h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    color: var(--primary-color);
+}
+
+p {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--dark-gray-text);
+}
+
+.highlight {
+    color: var(--accent-color); /* Warna highlight kuning */
+    font-weight: 700;
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color); /* Tombol CTA kuning */
+    color: var(--text-color); /* Teks gelap untuk kontras dengan kuning */
+    padding: 18px 40px;
+    font-size: 1.3rem;
+    font-weight: 700; /* Dibuat lebih tebal */
+    text-decoration: none;
+    border-radius: 50px;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; /* Tambah background-color transition */
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4); /* Sesuaikan shadow dengan kuning */
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    background-color: #e0a800; /* Sedikit lebih gelap saat hover */
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.6);
+}
+
+/* Features & Problems Grid */
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.feature-item, .problem-item {
+    background: #fff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+    width: 280px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s;
+    text-align: center; /* Pastikan teks di tengah */
+}
+
+.feature-item:hover, .problem-item:hover {
+    transform: translateY(-8px);
+}
+
+.feature-item i, .problem-item i {
+    width: 60px;
+    height: 60px;
+    color: var(--primary-color); /* Ikon tetap biru terang */
+    margin-bottom: 20px;
+    font-size: 3em;
+}
+
+.feature-item h3, .problem-item h3 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.feature-item ul {
+    list-style: none; /* Hilangkan bullet default */
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Atur daftar menjadi rata kiri */
+    width: 100%; /* Agar daftar mengisi lebar item */
+}
+
+.feature-item ul li {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: var(--dark-gray-text);
+    position: relative; /* Untuk custom bullet point */
+    padding-left: 20px; /* Ruang untuk custom bullet */
+}
+
+.feature-item ul li::before {
+    content: '\2713'; /* Tanda centang unicode */
+    color: var(--secondary-color); /* Warna hijau */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+
+/* Urgency Box (Form Section) */
+.urgency-box {
+    background-color: #fff;
+    border: 3px solid var(--accent-color); /* Border box urgensi kuning */
+    padding: 50px;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.urgency-box h2 {
+    color: var(--primary-color);
+}
+.urgency-box p {
+    color: var(--dark-gray-text);
+}
+
+/* Price & Countdown (jika diaktifkan) - Dihilangkan atau diubah jika tidak ada harga fix */
+/* .price {
+    margin: 25px 0;
+}
+
+.old-price {
+    text-decoration: line-through;
+    font-size: 1.8rem;
+    opacity: 0.7;
+    color: var(--danger-color);
+}
+
+.new-price {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 10px;
+}
+
+#countdown-timer {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--danger-color);
+    margin-top: 15px;
+} */
+
+/* Footer */
+footer {
+    background-color: var(--primary-color); /* Footer biru terang */
+    color: #fff; /* Teks putih untuk kontras */
+    text-align: center;
+    padding: 25px;
+    margin-top: 60px;
+}
+footer p {
+    color: #fff; /* Pastikan paragraf di footer berwarna putih */
+}
+
+.social-links a {
+    color: #fff; /* Ikon sosial juga putih */
+    transition: color 0.2s;
+}
+.social-links a:hover {
+    color: var(--accent-color); /* Hover ke warna kuning */
+}
+
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"], /* Tambahkan type="tel" */
+.form-group input[type="number"],
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 12px 10px;
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Testimonial Slider Styles */
+.testimonial-slider-container {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto 0;
+    overflow: hidden;
+    padding: 0 50px; /* Padding ini akan disesuaikan di media query */
+    border-radius: 12px;
+}
+.testimonial-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.testimonial-card {
+    min-width: 100%; /* Penting untuk responsif */
+    box-sizing: border-box;
+    text-align: center;
+    padding: 40px 30px;
+    background-color: #fff;
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.testimonial-card .stars {
+    color: var(--accent-color); /* Warna bintang kuning */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+.testimonial-card p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 25px;
+}
+.testimonial-card strong {
+    font-weight: 600;
+    color: var(--text-color);
+}
+.testimonial-prev-btn,
+.testimonial-next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.8rem;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+.testimonial-prev-btn:hover,
+.testimonial-next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.testimonial-prev-btn {
+    left: 10px;
+}
+.testimonial-next-btn {
+    right: 10px;
+}
+.testimonial-dots {
+    text-align: center;
+    padding-top: 30px;
+}
+.testimonial-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.testimonial-dot.active {
+    background-color: var(--primary-color);
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    .hero { padding-top: 80px; padding-bottom: 80px; }
+    section { padding: 60px 20px; }
+    .cta-button { padding: 16px 35px; font-size: 1.2rem; }
+    .feature-item, .problem-item { width: calc(50% - 30px); }
+    .urgency-box { padding: 40px; }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    p { font-size: 1rem; }
+    .hero { padding-top: 60px; padding-bottom: 60px; }
+    section { padding: 40px 15px; }
+    .cta-button { padding: 14px 30px; font-size: 1.1rem; }
+    .feature-item, .problem-item { width: 100%; }
+    .features-grid { gap: 20px; }
+    .urgency-box { padding: 30px; }
+
+    /* Testimonial Slider Mobile Adjustments */
+    .testimonial-slider-container {
+        padding: 0 20px; /* Kurangi padding container pada mobile */
+        border-radius: 8px; /* Radius border lebih kecil */
+    }
+
+    .testimonial-card {
+        padding: 30px 20px; /* Kurangi padding kartu pada mobile */
+        min-width: 100%; /* Setiap kartu mengambil lebar penuh slider */
+        margin-right: 0; /* Pastikan tidak ada margin kanan yang menyebabkan overflow */
+        box-sizing: border-box; /* Pastikan padding dan border termasuk dalam lebar 100% */
+    }
+
+    .testimonial-prev-btn,
+    .testimonial-next-btn {
+        font-size: 1.1rem; /* Ukuran tombol navigasi lebih kecil */
+        padding: 8px 12px;
+        top: 50%; /* Pastikan posisi vertikal tetap di tengah */
+    }
+
+    .testimonial-prev-btn {
+        left: 5px; /* Posisi tombol lebih dekat ke tepi */
+    }
+
+    .testimonial-next-btn {
+        right: 5px; /* Posisi tombol lebih dekat ke tepi */
+    }
+
+    .testimonial-dots {
+        padding-top: 20px; /* Ruang di atas dots lebih sedikit */
+    }
+
+    .testimonial-dot {
+        width: 10px; /* Ukuran dot lebih kecil */
+        height: 10px;
+        margin: 0 4px;
+    }
+}
